@@ -42,7 +42,7 @@ void checkPush(char **token, int lineno)
 {
 	if (strcmp(token[0], "push") == 0)
 	{
-		if (token[1][0] != '\0' && checkNumber(token[1]))
+		if (token[1] && checkNumber(token[1]))
 			j[0] = atoi(token[1]);
 		else
 		{

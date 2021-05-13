@@ -19,14 +19,8 @@ char *token_line(char *string)
  */
 char **token_string(char *string, char **opcode)
 {
-	int i = 0;
-	char *aux;
+	opcode[0] = strtok(string, " \t\n");
+        opcode[1] = strtok(NULL, " \t\n");
 
-	aux = strtok(string, " \t\n");
-	for (; aux && i < 2; i++)
-	{
-		opcode[i] = aux;
-		aux = strtok(NULL, " \t\n");
-	}
 	return (opcode);
 }
