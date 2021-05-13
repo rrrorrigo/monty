@@ -95,7 +95,7 @@ void callOpcode(char **opcode, stack_t **stack, unsigned int line_number)
 			break;
 		con++;
 	}
-	if (func[con].opcode && (!opcode[1] || strcmp(opcode[0], "push") == 0))
+	if (func[con].opcode)
 			func[con].f(stack, line_number);
 	else
 	{
