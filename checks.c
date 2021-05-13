@@ -95,4 +95,9 @@ void callOpcode(char *opcode, stack_t **stack, unsigned int line_number)
 	}
 	if (func[con].opcode)
 		func[con].f(stack, line_number);
+	else
+	{
+		printf("L%d: unknown instruction %s\n", line_number, opcode);
+		j[1] = 1;
+	}
 }

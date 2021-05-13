@@ -16,6 +16,11 @@ int main(int argc, char *argv[])
 
 	check(argc, argv[1]);
 	fd = fopen(argv[1], "r");
+	if (!fd)
+	{
+		printf("Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 	for (lineno = 1; (read = getline(&line, &len, fd)) != -1; lineno++)
 	{
 		token_line(line);
