@@ -75,7 +75,7 @@ int checkNumber(char *str)
  * @stack: double pointer to the struct
  * @line_number: line number of the file
  */
-void callOpcode(char *opcode, stack_t **stack, unsigned int line_number)
+void callOpcode(char **opcode, stack_t **stack, unsigned int line_number)
 {
 	instruction_t func[] = {
 		{"push", push},
@@ -91,15 +91,15 @@ void callOpcode(char *opcode, stack_t **stack, unsigned int line_number)
 
 	while (func[con].opcode)
 	{
-		if (strcmp(func[con].opcode, opcode) == 0)
+		if (strcmp(func[con].opcode, opcode[0]) == 0)
 			break;
 		con++;
 	}
-	if (func[con].opcode)
-		func[con].f(stack, line_number);
+	if (func[con].opcode && (!opcode[1] || strcmp(opcode[0], "push") == 0))
+			func[con].f(stack, line_number);
 	else
 	{
-		printf("L%d: unknown instruction %s\n", line_number, opcode);
+		printf("L%d: unknown instruction %s\n", line_number, opcode[0]);
 		j[1] = 1;
 	}
 }

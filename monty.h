@@ -54,5 +54,5 @@ int checkNumber(char *str);
 void check(int ac, char *av);
 void freell(stack_t *head);
 void checkJ(char *line, FILE *fp, stack_t *head);
-void callOpcode(char *opcode, stack_t **stack, unsigned int line_number);
+void callOpcode(char **opcode, stack_t **stack, unsigned int line_number);
 #endif

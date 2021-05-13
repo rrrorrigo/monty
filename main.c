@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		token_string(line, opcode);
 		checkPush(opcode, lineno);
 		checkJ(line, fd, head);
-		callOpcode(opcode[0], &head, lineno);
+		callOpcode(opcode, &head, lineno);
 		checkJ(line, fd, head);
 	}
 	free(line);
