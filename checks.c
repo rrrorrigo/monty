@@ -60,6 +60,8 @@ int checkNumber(char *str)
 {
 	int i = 0;
 
+	if (*str == '-')
+		str++;
 	for (; str[i]; i++)
 	{
 		if (!isdigit(str[i]))

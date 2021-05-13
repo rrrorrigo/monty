@@ -44,7 +44,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern unsigned int j[];
+extern int j[];
 
 char *token_line(char *string);
 char **token_string(char *string, char **opcode);

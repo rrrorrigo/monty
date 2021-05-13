@@ -1,5 +1,5 @@
 #include "monty.h"
-unsigned int j[2] = {0, 0};
+int j[2] = {0, 0};
 /**
  * main - the main function that read the monty file and calls functions
  * @argc: arguments counter
