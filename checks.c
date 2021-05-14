@@ -10,7 +10,7 @@ void check(int ac, char *av)
 
 	if (ac != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	extension = strrchr(av, '.');
@@ -18,7 +18,7 @@ void check(int ac, char *av)
 		return;
 	if (!(strcmp(".txt", extension) == 0 || strcmp(extension, ".m") == 0))
 	{
-		printf("Error: Can't open file %s\n", av);
+		fprintf(stderr, "Error: Can't open file %s\n", av);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -46,7 +46,7 @@ void checkPush(char **token, int lineno)
 			j[0] = atoi(token[1]);
 		else
 		{
-			printf("L%d: usage: push integer\n", lineno);
+			fprintf(stderr, "L%d: usage: push integer\n", lineno);
 			j[1] = 1;
 		}
 	}
@@ -75,7 +75,7 @@ int checkNumber(char *str)
  * @stack: double pointer to the struct
  * @line_number: line number of the file
  */
-void callOpcode(char **opcode, stack_t **stack, unsigned int line_number)
+void callOpcode(char **oc, stack_t **stack, unsigned int ln)
 {
 	instruction_t func[] = {
 		{"push", push},
@@ -91,15 +91,15 @@ void callOpcode(char **opcode, stack_t **stack, unsigned int line_number)
 
 	while (func[con].opcode)
 	{
-		if (strcmp(func[con].opcode, opcode[0]) == 0)
+		if (strcmp(func[con].opcode, oc[0]) == 0)
 			break;
 		con++;
 	}
 	if (func[con].opcode)
-			func[con].f(stack, line_number);
+			func[con].f(stack, ln);
 	else
 	{
-		printf("L%d: unknown instruction %s\n", line_number, opcode[0]);
+		fprintf(stderr, "L%d: unknown instruction %s\n", ln, oc[0]);
 		j[1] = 1;
 	}
 }
