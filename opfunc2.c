@@ -10,7 +10,7 @@ void add(stack_t **stack, unsigned int line_number)
 
 	if (!aux || !(aux->next))
 	{
-		printf("L%d: can't add, stack too short", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short", line_number);
 		j[1] = 1;
 		return;
 	}

@@ -11,7 +11,7 @@ void push(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		j[1] = 1;
 		return;
 	}
@@ -48,7 +48,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	if (!aux)
 	{
-		printf("L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		j[1] = 1;
 		return;
 	}
@@ -65,7 +65,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (!aux)
 	{
-		printf("L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		j[1] = 1;
 		return;
 	}
@@ -84,14 +84,14 @@ void pop(stack_t **stack, unsigned int line_number)
  * @stack: double pointer to the struct
  * @line_number: line number of the file
  */
-void swap(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, unsigned int ln)
 {
 	stack_t *aux = (*stack), *aux2;
 	int tn;
 
 	if (!aux || !(aux->next))
 	{
-		printf("L%d: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", ln);
 		j[1] = 1;
 		return;
 	}
